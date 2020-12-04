@@ -1,0 +1,47 @@
+{% extends 'general/master.html' %}
+<!--{% block categoria %}active{% endblock %}-->
+{% block TITULO %}Empresas{% endblock %}
+{% block tituloTemplate %}Empresas{% endblock %}
+{% block size %} h-C92_5 {% endblock %}
+{% block crudShow %}
+{%if form.errors  %}
+	show
+{%endif%}
+{% endblock %}
+{% block acciones %}
+
+{%endblock%}
+{% block contenido %}
+        <div class="table">
+            <table class="table table-sm text-truncate">
+              <thead>
+              	<tr>
+              		<th class="first-col text-capitalize" scope="col">Nombre Empresa</th>
+              		<th class="first-col text-capitalize" scope="col">Nit</th>
+					<th class="first-col text-capitalize" scope="col">Telefono</th>
+                    <th class="first-col text-capitalize" scope="col">direccion</th>
+                    <th class="first-col text-capitalize" scope="col">Correo</th>
+				</tr>	
+			</thead>
+            <tbody id="myTable">
+			 {% for empresa in empresas %}
+			 <tr class="js-flag">
+			 	<td class="first-col text-capitalize" scope="col">{{ empresa.nombre }}</td>
+			 	<td class="first-col text-capitalize" scope="col">{{ empresa.nit }}</td>
+			 	<td class="first-col text-capitalize" scope="col">{{ empresa.telefono}}</td>
+                <td class="first-col text-capitalize" scope="col">{{ empresa.direccion }}</td>
+                <td class="first-col text-capitalize" scope="col">{{ empresa.correo }}</td>
+			 </tr>	
+			 {% endfor %}
+		  </tbody>	
+		</table>
+	  </div>
+{% endblock %}
+{% comment %} {% block modalFooter %}
+<div class="col-4 d-flex">
+  <button type="button" class="btn btn-sm btn-danger text-truncate text-white" data-dismiss="modal"><i class="mr-2 fa fa-times-circle"></i>cancelar</button>  
+</div>
+<div class="col-8 d-flex justify-content-end">
+  <button type="button" valor="" class="js-deleteCrud btn btn-sm bg-Csecondary text-truncate text-white"><i class="mr-2 fa fa-check-circle"></i>Aceptar</button>
+</div>
+{% endblock %} {% endcomment %}

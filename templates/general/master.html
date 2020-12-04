@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html class="h-100 overflow-hy">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{% block TITULO %}Tickets{% endblock %}</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/master.css' %}">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="shortcut icon" type="text/css" href="{% static 'favicon.ico' %}" /> 
+</head>
+
+<body class="h-100">
+
+    <div class="wrapper h-100">
+        <div class="container-fluid"> 
+            <div class="row h-100">
+                   <nav class="" id="sidebar">
+                    <div class="layer"> 
+                        <div class="col-8 offset-2 h-C15 d-flex align-items-center">
+                            <h3>Tickets</h3>
+                        </div>
+                        <ul class="m-0 pt-2 pb-2 pl-0 h-75 overflow-auto">
+                            <li class="{{activeEmpresa}}" id="configuracion_rol">
+                                <a class="col pb-1 pt-1" href="/empresa/listarempresas"  data-target="#configuracionGeneral" aria-expanded="false" aria-controls="configuracionesGenerales">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-2 offset-1">
+                                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col pl-0">
+                                             Empresas
+                                        <i class="fa fa-chevron-down float-right" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                                <ul class="collapse p-0 {{showConfiguracionGeneral}}" id="configuracionGeneral">
+                                    {% comment %} <li class="{{activePais}} d-none" id="pais_rol">
+                                        <a class="col pb-1 pt-1" href="/general/listarPaises">
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col pl-5">
+                                                    Paises
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li> {% endcomment %}
+                                </ul>
+                            </li>
+                            <li class="{{activeEmpresa}}" id="configuracion_rol">
+                                <a class="col pb-1 pt-1" href="#" data-toggle="collapse" data-target="#configuracionGeneral" aria-expanded="false" aria-controls="configuracionesGenerales">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-2 offset-1">
+                                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col pl-0">
+                                             Proyectos
+                                        <i class="fa fa-chevron-down float-right" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                                <ul class="collapse p-0 {{showConfiguracionGeneral}}" id="configuracionGeneral">
+                                    {% comment %} <li class="{{activePais}} d-none" id="pais_rol">
+                                        <a class="col pb-1 pt-1" href="/general/listarPaises">
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col pl-5">
+                                                    Paises
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li> {% endcomment %}
+                                </ul>
+                            </li>
+                            <li class="{{activeEmpresa}}" id="configuracion_rol">
+                                <a class="col pb-1 pt-1" href="#" data-toggle="collapse" data-target="#configuracionGeneral" aria-expanded="false" aria-controls="configuracionesGenerales">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-2 offset-1">
+                                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col pl-0">
+                                             Estados
+                                        <i class="fa fa-chevron-down float-right" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                                <ul class="collapse p-0 {{showConfiguracionGeneral}}" id="configuracionGeneral">
+                                    {% comment %} <li class="{{activePais}} d-none" id="pais_rol">
+                                        <a class="col pb-1 pt-1" href="/general/listarPaises">
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col pl-5">
+                                                    Paises
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li> {% endcomment %}
+                                </ul>
+                            </li>
+                            <li class="{{activeEmpresa}}" id="configuracion_rol">
+                                <a class="col pb-1 pt-1" href="#" data-toggle="collapse" data-target="#configuracionGeneral" aria-expanded="false" aria-controls="configuracionesGenerales">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-2 offset-1">
+                                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col pl-0">
+                                             Historias
+                                        <i class="fa fa-chevron-down float-right" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                                <ul class="collapse p-0 {{showConfiguracionGeneral}}" id="configuracionGeneral">
+                                    {% comment %} <li class="{{activePais}} d-none" id="pais_rol">
+                                        <a class="col pb-1 pt-1" href="/general/listarPaises">
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col pl-5">
+                                                    Paises
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li> {% endcomment %}
+                                </ul>
+                            </li>
+                            <li class="{{activeEmpresa}}" id="configuracion_rol">
+                                <a class="col pb-1 pt-1" href="#" data-toggle="collapse" data-target="#configuracionGeneral" aria-expanded="false" aria-controls="configuracionesGenerales">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-2 offset-1">
+                                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col pl-0">
+                                             Tickets
+                                        <i class="fa fa-chevron-down float-right" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                                <ul class="collapse p-0 {{showConfiguracionGeneral}}" id="configuracionGeneral">
+                                    {% comment %} <li class="{{activePais}} d-none" id="pais_rol">
+                                        <a class="col pb-1 pt-1" href="/general/listarPaises">
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col pl-5">
+                                                    Paises
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li> {% endcomment %}
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="m-0 pl-0 h-C10 d-flex align-items-center">
+                            <li class="w-100">
+                                <a class="col pb-1 pt-1" href="{% url 'logout' %}">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-2 offset-1">
+                                            <i class="fa fa-sign-out text-Cdanger" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col pl-0 text-Cdanger">
+                                             Cerrar Sesi&oacute;n
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                   </nav> 
+                
+            <!-- Page Content Holder -->
+                <div id="Content-C" class="h-100">   
+                    <nav class="navbar navbar-expand-md navbar-light h-C7_5">
+                        <div class="container-fluid h-100 pr-0">
+
+                            <!--<button type="button" id="sidebarCollapse" class="navbar-btn">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>-->
+                            <button  id="sidebarCollapse" class="btn btn-dark d-inline-block d-md-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse d-none d-md-block" id="navbarSupportedContent">
+                                <a class="h4 font-weight-bold pt-4 pb-3" href="#">{% block tituloTemplate %}----{% endblock %}</a>
+                                <div class="nav navbar-nav ml-auto d-flex align-items-center">
+                                    <!-- <div class="nav-item dropdown rounded-circle" data-point="3">
+                                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-bell fa-lg  text-Csecondary" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="dropdown-menu div-Custom row" aria-labelledby="navbarDropdown">
+                                            <div class= "h5 col font-weight-bold d-flex justify-content-center"> Notificaciones</div>
+                                            <div class="lineWordMiddle col text-muted">Hoy</div>
+                                            <div class="col my-1" onclick='alert("probando")'>
+                                                <div class="p-2 small rounded bg-light mt-2">
+                                                    <span class="text-justify p-C3truncate ">
+                                                        Lorem Ipsum is simply dummy text of the printing and
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col my-1" onclick='alert("probando")'>
+                                                <div class="p-2 small rounded bg-light mt-2">
+                                                    <span class="text-justify p-C3truncate" data-point="">
+                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum  
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="lineWordMiddle col text-muted">11/08/1986</div>
+                                            <div class="col my-1" onclick='alert("probando")'>
+                                                <div class="p-2 small rounded bg-light mt-2">
+                                                    <span class="text-justify p-C3truncate">
+                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum  
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col my-1" onclick='alert("probando")'>
+                                                <div class="p-2 small rounded bg-light mt-2">
+                                                    <span class="text-justify p-C3truncate ">
+                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum  
+                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum  
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!--<li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            <div class="circular-image"></div>
+                                        </a>
+                                    </li>-->
+                                    
+                                    <div class="nav-item dropdown mt-3 bg-transparent rounded cpointer w-C200p">
+                                        <input class="d-none" type="text" value="{{request.user.groups.all.0.name}}" name="" id="group_id_user">
+                                        <div class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <div class="d-flex justify-content-end text-Csecondary font-weight-bold">
+                                                <i class="fa fa-user-circle-o fa-2x fa-lg text-Csecondary mr-3" aria-hidden="true"></i>
+                                                {{request.user}}
+                                            </div>        
+                                            <div class="h6 d-flex justify-content-end text-Csecondary font-weight-bold">
+                                                {{request.user.groups.all.0.name}}
+                                            </div>
+                                        </div>
+                                        <div class="col-11 dropdown-menu dropdown-menu-left border-white m-0" aria-labelledby="navbarDropdown">
+                                                <div class="row d-flex align-items-center small">
+                                                    {% if request.user.groups.all.0.id == 6 %}
+                                                        <div class="reset form-control has-value borderCsecondary text-Csecondary">
+                                                            <div class="col pb-1 pt-1 small js-redirect" data-redirect="/usuarios/passwordReset/">
+                                                                <i class="fa fa-pencil text-Csecondary mr-1" aria-hidden="true"></i>
+                                                                Modificar Contraseña
+                                                            </div>
+                                                        </div>
+                                                        <div class="reset form-control has-value borderCsecondary text-Csecondary">
+                                                            <div class="col pb-1 pt-1 small js-redirect text-Cdanger" data-redirect="{% url 'logout' %}">
+                                                                <i class="fa fa-sign-out text-Cdanger mr-1" aria-hidden="true"></i>
+                                                                Cerrar Sesi&oacute;n
+                                                            </div>
+                                                        </div>
+                                                    {% else %}
+                                                   <div class="perfil form-control has-value borderCsecondary text-Csecondary">
+                                                        {% if request.user.groups.all.0.id == 1 %}
+                                                        <div class="col pb-1 pt-1 small js-redirect" data-redirect="/domiciliarios/editarDomiciliario/{{request.user.id}}">
+                                                            <i class="fa fa-pencil text-Csecondary mr-1" aria-hidden="true"></i>
+                                                            Editar perfil
+                                                        </div>     
+                                                        <!-- Domiciliario -->
+                                                        {% elif request.user.groups.all.0.id ==  2 %}
+                                                        <div class="col pb-1 pt-1 small js-redirect" data-redirect="/empresarios/editarEmpresario/{{request.user.id}}">
+                                                            <i class="fa fa-pencil text-Csecondary mr-1" aria-hidden="true"></i>
+                                                            Editar perfil
+                                                        </div>
+                                                        <!-- Suscriptor -->
+                                                        {% elif request.user.groups.all.0.id ==  3 %}
+                                                        <div class="col pb-1 pt-1 small js-redirect" data-redirect="/suscriptores/editarSuscriptor/{{request.user.id}}">
+                                                            <i class="fa fa-pencil text-Csecondary mr-1" aria-hidden="true"></i>
+                                                            Editar perfil
+                                                        </div>
+                                                        <!-- Administrativo -->
+                                                        {% elif request.user.groups.all.0.id ==  4 %}
+                                                        <div class="col pb-1 pt-1 small js-redirect" data-redirect="/usuarios/editarUsuario/{{request.user.id}}">
+                                                            <i class="fa fa-pencil text-Csecondary mr-1" aria-hidden="true"></i>
+                                                            Editar perfil
+                                                        </div>
+                                                        <!-- Asistente -->
+                                                        {% elif request.user.groups.all.0.id ==  5 %}
+                                                        <div class="col pb-1 pt-1 small js-redirect" data-redirect="/usuarios/editarUsuario/{{request.user.id}}">
+                                                            <i class="fa fa-pencil text-Csecondary mr-1" aria-hidden="true"></i>
+                                                            Editar perfil
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="reset form-control has-value borderCsecondary text-Csecondary">
+                                                        <div class="col pb-1 pt-1 small js-redirect" data-redirect="/usuarios/passwordReset/{{request.user.id}}">
+                                                            <i class="fa fa-pencil text-Csecondary mr-1" aria-hidden="true"></i>
+                                                            Modificar Contraseña
+                                                        </div>
+                                                    </div>
+                                                    <div class="reset form-control has-value borderCsecondary text-Csecondary">
+                                                        <div class="col pb-1 pt-1 small js-redirect text-Cdanger" data-redirect="{% url 'logout' %}">
+                                                            <i class="fa fa-sign-out text-Cdanger mr-1" aria-hidden="true"></i>
+                                                            Cerrar Sesi&oacute;n
+                                                        </div>
+                                                    </div> 
+                                                    {% endif %}       
+                                                </div>  
+                                        </div>                                    
+                                    </div>
+                                    <div class="nav-item">
+                                        <input type="text" class="d-none" name="" value="{{request.user.groups.all.0.id}}" id="group_user_id">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="container-fluid h-C92_5">
+                        <div class="row h-100">
+                            <!--Inicio contenido-->
+                            <div class="col h-100">
+                              <div class="h-C7_5 overflow-y overflow-hx {% block hidden %}{% endblock %}">
+                                <div class="row">
+                                    {% block barra %}
+                                        <div class="col-md-4">
+                                            <form>
+                                                <div class="form-group i-Cinside mb-1">
+                                                    <span class="fa fa-search form-control-feedback"></span>
+                                                    <input type="text" class="form-control " type="text" name="buscar" id="mySearch" placeholder="Buscar">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="col-12 i-Cinside2">
+                                                    <div class="form-group mb-1">
+                                                        <select class="form-control" id="maxRows" name="maxRows">
+                                                          <option value="0"> Mostrar Todos</option>
+                                                          <option value="15">15</option>
+                                                          <option value="30">30</option>
+                                                          <option value="50">50</option>
+                                                          <option value="100">100</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-6 i-Cinside2">
+                                                    <div class="form-group mb-1">
+                                                        <input type="text" class="form-control" type="text" name="filtro2" id="filtro2" placeholder="filtro2">
+                                                    </div>
+                                                </div> -->  
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            {% block acciones %}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                      <button type="button" class="btn bg-Csecondary btn-block text-truncate text-white disabled" aria-disabled="true"><i class="fa fa-download"></i> Exportar</button>  
+                                                    </div>
+                                                    <div class="col-6">
+                                                      <button type="button" class="btn bg-Csecondary btn-block text-truncate text-white" data-toggle="collapse" data-target="#crudCollapse1" aria-expanded="false" aria-controls="crudCollapse1"><i class="fa fa-plus"></i> Nuevo</button>  
+                                                    </div>
+                                                </div>
+                                            {%endblock%}
+                                        </div>
+                                    {%endblock%}
+                                </div>
+                              </div>
+                              <div class="card {% block size %} {% endblock %} overflow-y overflow-hx ">
+                                <div class="card-body h-100 px-2 pt-2 pb-0 overflow-auto backgroundicon">
+                                    <!--Inicio contenido-->
+                                    {% block contenido %}
+
+                                    {% endblock %}
+                                    <!-- contenido-->
+                                </div>
+                              </div>
+                              <div class="h-C7_5">   
+                                    {% block footer %}
+                                        <div class="row d-flex justify-content-center">   
+                                            <div class="pagination">
+                                        
+                                            </div>
+                                            <input type="number" value="" class="d-none" min="0" id="bloque">
+                                        </div>
+                                    {% endblock %}
+                              </div>
+                            </div>
+                            <!-- contenido-->
+                        </div>
+                    </div>
+                </div>
+                <div  id="crudCollapse1" class="crudC h-100 w-100 position-absolute collapse  {% block crudShow %}{% endblock %}">
+                        <div class="col-md-4 offset-md-8 bg-white h-100" >
+                            <div class="h-C7_5 d-flex align-content-center flex-wrap text-truncate">
+                                <div class="col-1">   
+                                    <i class="fa fa-plus fa-lg text-Cprimary" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                <a class="col-12 h6 mr-5 font-weight-bold mt-5" href="#">{% block tituloFormularioTemplate %}---{% endblock %}</a>
+                                </div>
+                            </div>
+                            <div class="backgroundicon h-C92_5">
+                                {% block formulario %}
+                                {% endblock %}
+                            </div> 
+                        </div> 
+                </div>
+            </div>
+           <!-- <div class="row  d-flex justify-content-center align-items-center bg-Csecondary h-C5 text-muted">
+                COPYRIGHT © 2019. ALL RIGHTS RESERVED. DESIGNED BY EUREKA DMS
+            </div>-->
+        </div>
+        <!-- Sidebar Holder -->
+    
+    </div>
+    {% block modal %}
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="modal-title text-Csecondary text-center mt-2 mb-0">{% block modalTitle %}Espere{% endblock %}</h3>            
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6 class="modal-title text-center mb-0 font-weight-bold">
+                                        {% block modalContent %}
+                                            ¿Esta seguro de eliminar este elemento?
+                                        {% endblock %}
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container-fluid">
+                            <div class="row">
+                                {% block modalFooter %}
+                                    
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    {% block modalDescuentos %}
+        <div class="modal fade" id="modalDescuentos" tabindex="-1" role="dialog" aria-labelledby="modalDescuentosTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="modal-title text-Csecondary text-center mt-2 mb-0">{% block modalDescuentosTitle %}Espere{% endblock %}</h3>            
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6 class="modal-title text-center mb-0 font-weight-bold">
+                                        {% block modalDescuentosContent %}
+                                            ¿Esta seguro de eliminar este elemento?
+                                        {% endblock %}
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container-fluid">
+                            <div class="row">
+                                {% block modalDescuentosFooter %}
+                                    
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    <!-- Modal pruebas -->
+    <div class="modal fade" id="GeneralModal">
+        <div class="modal-dialog modal-dialog-scrollable modal-{% block sizeProfileModal %}{% endblock %} modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6 class="modal-title text-center mb-0 font-weight-bold">
+                                        {% block bodyProfileModal %}
+                                        {% endblock %}
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            {% block footerProfileModal %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block modalContraseña %}
+
+    {% endblock %}
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+    
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'smart-selects/admin/js/chainedfk.js' %}"></script>
+    <script type="text/javascript" src="{% static 'smart-selects/admin/js/chainedm2m.js' %}"></script>
+    <script type="text/javascript" src="{% static 'smart-selects/admin/js/bindfields.js' %}"></script>
+    <!-- Popper.JS -->    
+    <!-- Bootstrap JS  con popper.js-->
+    <script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <!--Funcionalidades personalizadas generales-->
+    <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/apis.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/delete.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/project.js' %}"></script>
+    {% block script %}
+
+    {% endblock %}
+</body>
+
+</html>
