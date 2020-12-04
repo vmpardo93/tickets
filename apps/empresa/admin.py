@@ -6,3 +6,4 @@ from apps.empresa.models import *
 admin.site.register(Empresa)
 admin.site.register(Estado)
 admin.site.register(Proyecto)
+admin.site.register(Historia)

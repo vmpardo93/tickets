@@ -1,0 +1,41 @@
+{% extends 'general/master.html' %}
+<!--{% block categoria %}active{% endblock %}-->
+{% block TITULO %}Estados{% endblock %}
+{% block tituloTemplate %}Estados{% endblock %}
+{% block size %} h-C92_5 {% endblock %}
+{% block crudShow %}
+{%if form.errors  %}
+	show
+{%endif%}
+{% endblock %}
+{% block acciones %}
+
+{%endblock%}
+{% block contenido %}
+        <div class="table">
+            <table class="table table-sm text-truncate">
+              <thead>
+              	<tr>
+                  <th class="first-col text-capitalize" scope="col">Id</th>
+              		<th class="first-col text-capitalize" scope="col">Nombre Empresa</th>
+				</tr>	
+			</thead>
+            <tbody id="myTable">
+			 {% for estado in estados %}
+			 <tr class="js-flag">
+			 	<td class="first-col text-capitalize" scope="col">{{ estado.id }}</td>
+			 	<td class="first-col text-capitalize" scope="col">{{ estado.nombre }}</td>
+			 </tr>	
+			 {% endfor %}
+		  </tbody>	
+		</table>
+	  </div>
+{% endblock %}
+{% comment %} {% block modalFooter %}
+<div class="col-4 d-flex">
+  <button type="button" class="btn btn-sm btn-danger text-truncate text-white" data-dismiss="modal"><i class="mr-2 fa fa-times-circle"></i>cancelar</button>  
+</div>
+<div class="col-8 d-flex justify-content-end">
+  <button type="button" valor="" class="js-deleteCrud btn btn-sm bg-Csecondary text-truncate text-white"><i class="mr-2 fa fa-check-circle"></i>Aceptar</button>
+</div>
+{% endblock %} {% endcomment %}

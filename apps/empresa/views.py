@@ -16,10 +16,32 @@ def listarEmpresas(request):
     }
     return render(request, "empresa/listarEmpresas.html", context)
 
-# def listarEmpresas(request):
-#     return render (request, "empresa/dashboard.html")
 def listarProyectos(request):
-    return render (request, "empresa/dashboard.html")
+    Proyectos =  Proyecto.objects.all()
+    context = {
+        "proyectos":Proyectos,
+        'showProyectos': 'show',
+        'activeProyectos': 'active',
+        'activeGroup': 'active',
+    }
+    return render(request, "empresa/listarProyectos.html", context)
+
 def listarEstados(request):
-    return render (request, "empresa/dashboard.html")
+    estados =  Estado.objects.all()
+    context = {
+        "estados":estados,
+        'showEstados': 'show',
+        'activeEstados': 'active',
+        'activeGroup': 'active',
+    }
+    return render(request, "empresa/listarEstados.html", context)
     
+def listarHistorias(request):
+    historias =  Historia.objects.all()
+    context = {
+        "historias":historias,
+        'showHistorias': 'show',
+        'activeHistorias': 'active',
+        'activeGroup': 'active',
+    }
+    return render(request, "empresa/listarHistorias.html", context)

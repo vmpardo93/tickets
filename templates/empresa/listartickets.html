@@ -1,0 +1,120 @@
+{% extends 'general/master.html' %}
+{% block TITULO %}Tickets{% endblock %}
+{% block tituloTemplate %}<div class="small font-weight-bold">Tickets</div>{% endblock %}
+{% block tituloFormularioTemplate %}Crear Ticket{% endblock %}
+{% block crudShow %}
+{%if form.errors  %}
+	show
+{%endif%}
+{% endblock %}
+{% block size %} h-C92_5 {% endblock %}
+{% load humanize %}
+{% load mathfilters %}
+{% block acciones %}
+    <div class="row">
+        <div class="col-12">
+          <button type="button" class="btn btn-block bg-Csecondary text-truncate text-white" data-toggle="collapse" data-target="#crudCollapse1" aria-expanded="false" aria-controls="crudCollapse1"><i class="fa fa-plus"></i> Nuevo</button>  
+        </div>
+    </div>
+{%endblock%}
+{%block formulario%}  
+	<form class="Cinput h-100" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="h-C92_5 overflow-y overflow-hx">
+			<div class="row">	
+				<div class="col-12">
+					<div class="form-group">
+						<select name="historia" autofocus class="form-control has-value" id="category" value="{%if form.errors %}{{form.model.value}}{%endif%}">
+			 				{% for historia in historias %}
+							    <option value="{{historia.id}}">{{historia.nombre}}</option>
+							{% endfor %}
+			 			</select>
+						<label for="historia">Historias</label>
+					</div>
+				</div>
+				{%if form.historia.errors %}
+					<div class="col-12 alert alert-danger p-0 m-0 small">
+						{{form.historia.errors}}
+					</div>	
+				{%endif%}			
+			 	<div class="col-12">
+					<div class="form-group">
+			 			<select name="estado" autofocus class="form-control has-value" id="estado">
+							{% for estado in estados %}
+							    <option value="{{estado.id}}">{{estado.nombre}}</option>
+							{% endfor %}
+						</select>	
+						<label for="estado">Estados</label>
+					</div>	
+				</div>
+				{%if form.historia.errors %}
+					<div class="col-12 alert alert-danger p-0 m-0 small">
+						{{form.historia.errors}}
+					</div>	
+				{%endif%}
+				<div class="col-12">
+					<div class="form-group">
+						<input type="text" class="form-control has-value" name="nombre" id="referencia" value="{%if form.errors %}{{form.nombre.value}}{%endif%}"placeholder="">
+						<label for="referencia">Nombre</label>
+					</div>
+					{%if form.nombre.errors %}
+						<div class="col-12 alert alert-danger p-0 m-0 small">
+							{{form.nombre.errors}}
+						</div>	
+					{%endif%}
+				</div>
+				<div class="col-12">
+					<div class="form-group">
+						<textarea type="input" class="inputarea form-control has-value {% if form.descripcion.errors %} is-invalid {% endif %}" name="descripcion" id="Descripcion" value="">{%if form.descripcion.value == None %} {%else%}{{form.descripcion.value}}{%endif%}</textarea>
+						<label for="Descripcion">Descripcion (Max 500 Caracteres)</label>
+					</div>
+					{%if form.descripcion.errors %}
+						<div class="col-6 alert alert-danger p-0 m-0 small">
+							{{form.descripcion.errors}}
+						</div>	
+					{%endif%}
+				</div>
+			</div>
+		</div>	
+		<div class="h-C7_5">
+			<div class="row">
+				<div class="col">   
+					<a href="{% url 'referencias:listarReferencias'%}"><button type="button" class=" js-closeCrud btn btn-danger btn-sm btn-block">Cancelar</button></a>
+				</div>
+				<div class="col">   
+					<button type="submit" class="btn btn-sm bg-Csecondary text-white btn-block">Crear</button>
+				</div>
+			</div>
+		</div>
+	</form>
+{% endblock %}
+{% block contenido %}
+        <div class="table">
+            <table class="table table-sm text-truncate">
+             		<thead>
+             			<tr>
+							<th class="" scope="col">nombre</th>
+							<th class="" scope="col">descripcion</th>
+							<th class="" scope="col">estado</th>
+							<th class="" scope="col">historia</th>
+						</tr>	
+					</thead>
+					<tbody id="myTable">	
+							{% for ticket in tickets %}
+							<tr class="js-flag">
+								<td class="w-C150p">{{ ticket.nombre }}</td>
+								<td class="w-C150p">{{ ticket.descripcion }}</td>
+								<td class="w-C150p">{{ ticket.estado.nombre }}</td>
+								<td class="w-C150p">{{ ticket.historia.nombre }}</td>
+								<td class="" scope="col">
+	    			    			<a class="fa fa-pencil-square-o text-Cprimary mr-2 cursor-pointer" href="{% url 'referencias:editarReferencia' referencia.id %}"></a>
+									<a class="fa fa-trash text-Cdanger js-delete cursor-pointer" data-toggle="modal" data-target="#exampleModalCenter" data-api="delete" valor="/api-referencias/estadoreferencia/{{referencia.id}}/" ></a>
+									<!-- <a id="createRef" class="fa fa-plus text-Cprimary js-delete" data-toggle="modal" data-target="#exampleModalCenter" data-api="descuentos" value={{referencia.id}}></a> -->
+	    			    		</td>
+							</tr>	
+						{% endfor %}
+              		</tbody>
+            	</table>
+        	</div>
+{% endblock %}
+
